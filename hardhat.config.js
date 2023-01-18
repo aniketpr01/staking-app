@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox")
-require("./tasks")
+require("@nomiclabs/hardhat-waffle")
+require("hardhat-deploy")
 require("dotenv").config()
 
 const COMPILER_SETTINGS = {
@@ -49,6 +50,11 @@ module.exports = {
                 COMPILER_SETTINGS,
             },
         ],
+    },
+    namedAccounts: {
+        deployer: {
+            default: 0,
+        },
     },
     networks: {
         hardhat: {
@@ -109,14 +115,7 @@ module.exports = {
     },
     contractSizer: {
         runOnCompile: false,
-        only: [
-            "APIConsumer",
-            "AutomationCounter",
-            "NFTFloorPriceConsumerV3",
-            "PriceConsumerV3",
-            "RandomNumberConsumerV2",
-            "RandomNumberDirectFundingConsumerV2",
-        ],
+        only: [],
     },
     paths: {
         sources: "./contracts",
